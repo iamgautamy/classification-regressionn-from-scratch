@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-
+import operator as op
 
 
 # import data
@@ -100,20 +100,8 @@ def mapFeaturePlot(x1,x2,degree):
             out= np.hstack((out,terms))
     return out
 
-plt.scatter(X[[:,0],1],X[[:,0],2],c="r",marker="+",label="Purchased")
-plt.scatter(X[[:,0],1],X[[:,0],2],c="b",marker="x",label="Not_Purchased")
-# Plotting decision boundary
-u_vals = np.linspace(-1,1.5,50)
-v_vals= np.linspace(-1,1.5,50)
-z=np.zeros((len(u_vals),len(v_vals)))
-for i in range(len(u_vals)):
-    for j in range(len(v_vals)):
-        z[i,j] =mapFeaturePlot(u_vals[i],v_vals[j],6) @ theta
 
-plt.contour(u_vals,v_vals,z.T,0)
-plt.xlabel("Exam 1 score")
-plt.ylabel("Exam 2 score")
-plt.legend(loc=0)
+
 
 
 def classifierPredict(theta,X):
