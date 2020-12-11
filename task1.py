@@ -19,6 +19,7 @@ plt.figure(figsize=(10, 6))
 plt.scatter(X[y == 0][:, 0], X[y == 0][:, 1], color='b', label='0') 
 plt.scatter(X[y == 1][:, 0], X[y == 1][:, 1], color='r', label='1')
 plt.legend()
+plt.show()
 
 
 
@@ -91,6 +92,7 @@ plt.xlabel("Iteration")
 plt.ylabel("$J(\Theta)$")
 plt.title("Cost function using Gradient Descent")
 
+
 def mapFeaturePlot(x1,x2,degree):
     
     out = np.ones(1)
@@ -112,7 +114,25 @@ def classifierPredict(theta,X):
     
     return predictions>0
 p=classifierPredict(theta,X)
-print("Train Accuracy:", (sum(p==y[:,np.newaxis])/len(y) *100)[0],"%")
+print("Accuracy:", (sum(p==y[:,np.newaxis])/len(y) *100)[0],"%")
+
+"""
+pos , neg = (y==1) , (y==0)
+plt.scatter(X[pos[:,0],1],X[pos[:,0],2],c="r",marker="+",label="Purchased")
+plt.scatter(X[neg[:,0],1],X[neg[:,0],2],c="b",marker="x",label="Not_Purchased")
+x_value= np.array([np.min(X[:,1]),np.max(X[:,1])])
+y_value=-(theta[0] +theta[1]*x_value)/theta[2]
+plt.plot(x_value,y_value, "r")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.legend(loc=0)
+plt.show()
+"""
+
+
+
+
+
 
 
 
